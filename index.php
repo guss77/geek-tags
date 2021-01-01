@@ -3,10 +3,10 @@ function sigml_to_html($sig) {
 	ob_start();
 	foreach ($sig->p as $p) {
 ?>
-<p><?php echo $p ?></p>
+<p><?php echo preg_replace('/(?<=\s)\s/', '&nbsp;', $p); ?></p>
 <?php
 	}
-	return preg_replace('/(?<=\s)\s/', '&nbsp;', trim(ob_get_clean()));
+	return trim(ob_get_clean());
 }
 
 function sigml_to_text($sig) {
